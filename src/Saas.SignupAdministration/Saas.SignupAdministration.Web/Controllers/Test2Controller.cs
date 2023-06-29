@@ -146,68 +146,6 @@ public class Test2Controller : ControllerBase
 
     }
 
-    // POST api/<TestController>
-    [HttpPost]
-    public async Task<ActionResult> Post([FromBody] Order order)
-    {
-
-        List<Order> orders = new();
-        //Add booking
-        CreateBooking(order, "tenant_Spike");
-        var results = GetOrder("tenant_Spike");
-
-        return new JsonResult(results.Last());
-
-
-    }
-
-    private void CreateBooking(Order order, string databaseName)
-    {
-        var sqlConnectionString = _config.GetRequiredSection(SqlOptions.SectionName)
-       .Get<SqlOptions>()?.IbizzSaasConnectionString
-           ?? throw new NullReferenceException("SQL Connection string cannot be null.");
-
-        string mask = "iBusinessSaasTests";
-        sqlConnectionString = sqlConnectionString.Replace(mask, databaseName);
-
-        using (SqlConnection con = new SqlConnection(sqlConnectionString))
-        {
-            con.Open();
-
-            using (SqlCommand command = new SqlCommand("spInsertBookings", con))
-            {
-                command.CommandType = CommandType.StoredProcedure;
-
-                command.Parameters.AddWithValue("bookingId", SqlDbType.Int).Value = 0;
-                command.Parameters.AddWithValue("externalSchemeAdmin", SqlDbType.NVarChar).Value = booking.ExternalSchemeAdmin;
-                command.Parameters.AddWithValue("courseDate", SqlDbType.NVarChar).Value = booking.CourseDate;
-                command.Parameters.AddWithValue("bookingType", SqlDbType.NVarChar).Value = booking.BookingType;
-                command.Parameters.AddWithValue("retirementSchemeName", SqlDbType.NVarChar).Value = booking.RetirementSchemeName;
-                command.Parameters.AddWithValue("schemePosition", SqlDbType.NVarChar).Value = booking.SchemePosition;
-                command.Parameters.AddWithValue("trainingVenue", SqlDbType.NVarChar).Value = booking.TrainingVenue;
-                command.Parameters.AddWithValue("paymentMode", SqlDbType.NVarChar).Value = booking.PaymentMode;
-                command.Parameters.AddWithValue("additionalRequirements", SqlDbType.NVarChar).Value = booking.AdditionalRequirements;
-                command.Parameters.AddWithValue("userId ", SqlDbType.Int).Value = booking.UserId;
-                command.Parameters.AddWithValue("disabilityStatus", SqlDbType.NVarChar).Value = booking.DisabilityStatus;
-                command.Parameters.AddWithValue("email", SqlDbType.NVarChar).Value = booking.Email;
-                command.Parameters.AddWithValue("employerName", SqlDbType.NVarChar).Value = booking.EmployerName;
-                command.Parameters.AddWithValue("experience", SqlDbType.Int).Value = booking.Experience;
-                command.Parameters.AddWithValue("fullName", SqlDbType.NVarChar).Value = booking.FullName;
-                command.Parameters.AddWithValue("idNumber", SqlDbType.NVarChar).Value = booking.IdNumber;
-                command.Parameters.AddWithValue("physicalAddress", SqlDbType.NVarChar).Value = booking.PhysicalAddress;
-                command.Parameters.AddWithValue("position", SqlDbType.NVarChar).Value = booking.Position;
-                command.Parameters.AddWithValue("originCountry", SqlDbType.NVarChar).Value = booking.OriginCountry;
-                command.Parameters.AddWithValue("telephone", SqlDbType.NVarChar).Value = booking.Telephone;
-
-                command.ExecuteReader();
-            }
-        }
-
-
-    }
-
-
-
 
 
     // DELETE api/<TestController>/5

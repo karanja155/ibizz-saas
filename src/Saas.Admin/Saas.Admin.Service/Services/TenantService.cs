@@ -363,7 +363,7 @@ public class TenantService : ITenantService
                 }
                 else
                 {
-                    throw new Exception($"You {tenant.Company} of route {tenant.Route} database could not be provision");
+                    throw new Exception($"database could not be provisioned for tenant {tenant.Company}");
                 }
 
             }

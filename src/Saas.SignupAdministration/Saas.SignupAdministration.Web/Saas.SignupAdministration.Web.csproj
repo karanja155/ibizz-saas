@@ -47,8 +47,6 @@
 
   </ItemGroup>
 
-  </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Saas.Admin\Saas.Admin.Client\Saas.Admin.Client.csproj" />
     <ProjectReference Include="..\..\Saas.Lib\Saas.Identity\Saas.Identity.csproj" />
