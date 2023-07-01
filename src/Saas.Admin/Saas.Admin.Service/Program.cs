@@ -88,7 +88,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration, AzureB2CAdminApiOptions.SectionName);
 
 //Add database handler. To directly query and a database using stored procedures or direct queries
-builder.Services.AddSingleton<IDatabaseHandler, DatabaseHandler>();
+builder.Services.AddScoped<IDatabaseHandler, DatabaseHandler>();
 
 // Register authorization handlers for authorization
 builder.Services.AddSingleton<IAuthorizationHandler, SaasTenantPermissionAuthorizationHandler>();
