@@ -22,6 +22,8 @@ mono_crash.*
 
 # Certs
 *.crt
+*.key
+*.pem
 *.pfx
 
 # Build results
