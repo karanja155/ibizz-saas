@@ -17,6 +17,7 @@ import ScrollToTop from "./components/frontend/ScrollToTop";
 import { NotFound } from "./pages/landing-page/NotFound";
 import BookingDetail from "./pages/dashboard/bookings/BookingDetail";
 import OrderDetail from "./pages/dashboard/purchase-orders/OrderDetail";
+import InviteUsers from "./pages/dashboard/users/InviteUsers/InviteUsers";
 
 function App() {
   return (
@@ -136,6 +137,14 @@ function App() {
                 </ProtectedRoute>
               }
             ></Route>
+            <Route 
+              path="inviteUser"
+              element={
+                <ProtectedRoute>
+                  <InviteUsers />
+                </ProtectedRoute>
+              }
+            ></Route>
           </Route>
           <Route
             path="*"
@@ -145,6 +154,14 @@ function App() {
               </FrontendLayout>
             }
           />
+        <Route 
+          path="inviteUser"
+          element={
+            <ProtectedRoute>
+              <InviteUsers />
+            </ProtectedRoute>
+          }
+        />
         </Routes>
       </ScrollToTop>
     </Router>
