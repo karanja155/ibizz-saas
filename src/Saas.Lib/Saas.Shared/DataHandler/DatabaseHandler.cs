@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Saas.Shared.Options;
 using System.Data;
+using System.Data.SqlTypes;
 
 namespace Saas.Shared.DataHandler;
 public class DatabaseHandler : IDatabaseHandler
@@ -23,7 +24,7 @@ public class DatabaseHandler : IDatabaseHandler
     {
         //clear parameters for further use
         CommandTimeout = 30;
-          command?.DisposeAsync();
+        command?.DisposeAsync();
         _connection?.DisposeAsync();
     }
 
@@ -112,7 +113,7 @@ public class DatabaseHandler : IDatabaseHandler
                 //Open connection to database only when it's closed
                 if (_connection.State != ConnectionState.Open)
                 {
-                    _connection.OpenAsync().Wait();
+                    _connection.OpenAsync().Wait(); 
                 }
 
                 command = new SqlCommand(procedureQuery, _connection);
@@ -138,6 +139,8 @@ public class DatabaseHandler : IDatabaseHandler
                                 break;
 
                             case SqlDbType.Money:
+                                command.Parameters.AddWithValue(parameter.Name, parameter.Type).Value = SqlMoney.Parse(parameter.Value ?? "-1");
+                                break;
                             case SqlDbType.Decimal:
                                 command.Parameters.AddWithValue(parameter.Name, parameter.Type).Value = decimal.Parse(parameter.Value ?? "-1");
                                 break;

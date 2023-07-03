@@ -22,7 +22,6 @@ public class Parameter
     public SqlDbType Type { get; set; }
 
 }
-
 //Generic parameters
 public class Parameter<T>
 {
@@ -37,6 +36,7 @@ public class Parameter<T>
     { 
         Value = default;
         Name = string.Empty;
+        Type = SqlDbType.NVarChar;  //Added by James Wanyeki on 20230702 for type safety
     }
 
     public string Name { get; set; }
