@@ -14,6 +14,8 @@ using Polly;
 using Saas.Permissions.Service.Data.Context;
 using Saas.Shared.DataHandler;
 using Saas.Identity.Services;
+using TestProject.Interfaces;
+using TestProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationInsightsTelemetry();
@@ -97,6 +99,8 @@ builder.Services.AddScoped<IDatabaseHandler, DatabaseHandler>();
 
 //Add custom tenant service handler
 builder.Services.AddScoped<ICustomTenantService, CustomTenantService>();
+
+builder.Services.AddScoped<IUserInviteService, UserInviteService>();
 
 builder.Logging.ClearProviders();
 

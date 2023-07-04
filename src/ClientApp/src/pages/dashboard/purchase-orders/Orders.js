@@ -81,7 +81,7 @@ const Orders = () => {
   };
 
   return (
-    <main className="w-full min-h-full relative px-3 md:px-5 py-1.5">
+    <main className="dashboard-container">
       <section>
         <CategoryComponent>
           <MenusGroupComponent

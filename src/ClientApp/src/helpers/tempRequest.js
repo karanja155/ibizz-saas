@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8888/api";
+const BASE_URL = "http://localhost:5012/api";
 
 let request = axios.create({ baseURL: BASE_URL });
 
@@ -12,7 +12,7 @@ request.interceptors.request.use(
       config.headers = {
         Authorization: `Bearer ${TOKEN}`,
         "Access-Control-Allow-Origin":
-          "https://ibusiness-git-main-moryno.vercel.app",
+          "https://localhost:3000",
       };
     }
 

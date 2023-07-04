@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TespApiApp", "..\..\..\Pers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaaS.SecurityAdmin", "SaaS.SecurityAdmin\SaaS.SecurityAdmin.csproj", "{549DFA0C-1D2A-4970-A72F-D22BC917F0C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{CA3DDD24-B889-42E4-ADB9-81B30B9E476C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,12 @@ Global
 		{549DFA0C-1D2A-4970-A72F-D22BC917F0C9}.Multi Debug|Any CPU.Build.0 = Debug|Any CPU
 		{549DFA0C-1D2A-4970-A72F-D22BC917F0C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{549DFA0C-1D2A-4970-A72F-D22BC917F0C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA3DDD24-B889-42E4-ADB9-81B30B9E476C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3DDD24-B889-42E4-ADB9-81B30B9E476C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3DDD24-B889-42E4-ADB9-81B30B9E476C}.Multi Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3DDD24-B889-42E4-ADB9-81B30B9E476C}.Multi Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3DDD24-B889-42E4-ADB9-81B30B9E476C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3DDD24-B889-42E4-ADB9-81B30B9E476C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +141,7 @@ Global
 		{74B177A0-26D8-43CB-9C1E-B65928E1E95D} = {EB890835-2B03-4950-8F6B-5DA8BC301D80}
 		{C47C6770-0A74-40D3-B6CA-BE76F6D95F54} = {E952ADFC-CB9F-4C13-9862-E2C8E5C4088E}
 		{549DFA0C-1D2A-4970-A72F-D22BC917F0C9} = {EB890835-2B03-4950-8F6B-5DA8BC301D80}
+		{CA3DDD24-B889-42E4-ADB9-81B30B9E476C} = {EB890835-2B03-4950-8F6B-5DA8BC301D80}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {41C71D6C-FEC9-49A8-A6FB-FAF43AB15C84}

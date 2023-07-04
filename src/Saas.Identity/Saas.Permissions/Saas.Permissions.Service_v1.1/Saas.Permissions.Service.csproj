@@ -40,6 +40,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Saas.Lib\Saas.Identity\Saas.Identity.csproj" />
     <ProjectReference Include="..\..\..\Saas.Lib\Saas.Shared\Saas.Shared.csproj" />
+    <ProjectReference Include="..\..\..\TestProject\TestProject.csproj" />
   </ItemGroup>
 
 </Project>
