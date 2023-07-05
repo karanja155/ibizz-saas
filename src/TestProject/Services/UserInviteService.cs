@@ -5,22 +5,21 @@ using System.Data;
 using Azure.Communication.Email;
 using Microsoft.Data.SqlClient;
 using Saas.Identity.Services;
-using Saas.Permissions.Service.Models;
+using Saas.Shared.Options;
 
 namespace TestProject.Services;
 
 public class UserInviteService : IUserInviteService
 {
-	private readonly IConfiguration _config;
-	private readonly ICustomTenantService _tenantService;
 	private readonly string _connectionString;
+	private readonly IConfiguration _configuration;
 
 	public UserInviteService(IConfiguration config, ICustomTenantService tenantService)
 	{
-		_config = config;
-		_tenantService = tenantService;
-		_connectionString = "Server=tcp:sqldb-asdk-dev-lsg5.database.windows.net,1433;Initial Catalog=iBusinessSaasTests;Persist Security Info=False;User ID=sqlAdmin;Password=UnK307r8DUW0zvlOjli4d1SW+wB138HNA4xgA/oPLe/uA2zmrXzh1NspSEBWM8W6;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
+		_configuration = config;
+		_connectionString = _configuration.GetRequiredSection(SqlOptions.SectionName)
+		.Get<SqlOptions>()?.IbizzSaasConnectionString
+		 ?? throw new NullReferenceException("SQL Connection string cannot be null.");
 	}
 
 	public async Task<IActionResult> SendInvitationAsync(MUserInviteInfo info, Guid userId)
@@ -65,12 +64,12 @@ public class UserInviteService : IUserInviteService
 			ExpiryDate = DateTime.Now
 			};
 
-		string connectionString = "endpoint=https://ibusinesscommunicationservice.communication.azure.com/;accesskey=S0ZwxgSVJ0zh1Ih2WcRe+hCgshA7JzNM6vJhsg9PQSkVqj4Jsm+lpi/M/A7mPmCk1lGNFdDiUNYHfWxFZQpkOw==";
+		string connectionString = _configuration.GetValue<string>("CommServicePrimaryKey") ?? throw new NullReferenceException("Communication service primary key must be specified.");
 		EmailClient emailClient = new(connectionString);
 
 		//Replace with your domain and modify the content, recipient details as required
 
-		var subject = "Welcome to Azure Communication Service Email APIs.";
+		var subject = "Invitation to iBusiness";
 		var htmlContent = "<html>" +
 							"<body>" +
 								"<h1>Quick send email test</h1>" +

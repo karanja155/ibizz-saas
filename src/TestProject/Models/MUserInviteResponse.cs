@@ -1,4 +1,4 @@
-﻿namespace Saas.Permissions.Service.Models;
+﻿namespace TestProject.Models;
 
 public class MUserInviteResponse
 {

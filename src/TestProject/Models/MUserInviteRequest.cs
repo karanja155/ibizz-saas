@@ -1,6 +1,6 @@
-﻿namespace Saas.Permissions.Service.Models;
+﻿namespace TestProject.Models;
 
 public record MUserInviteRequest
 {
-	public Guid InvitationCode { get; set; }
+	public Guid InvitationCode { get; init; }
 }

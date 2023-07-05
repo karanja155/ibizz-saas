@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Saas.Permissions.Service.Interfaces;
-using Saas.Permissions.Service.Models;
-using TestProject.Interfaces;
+﻿using TestProject.Interfaces;
 using TestProject.Models;
 
 namespace Saas.Permissions.Service.Controllers;

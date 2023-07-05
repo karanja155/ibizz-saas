@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Saas.Permissions.Service.Models;
 using TestProject.Models;
 
 namespace TestProject.Interfaces;
