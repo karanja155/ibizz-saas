@@ -28,7 +28,9 @@ public class UserInviteService : IUserInviteService
 		//string mask = "iBusinessSaasTests";
 		//sqlConnectionString = sqlConnectionString.Replace(mask, "tenant_Spike");
 
-		using (SqlConnection con = new(_connectionString))
+		try
+		{
+			using (SqlConnection con = new(_connectionString))
 		{
 			con.Open();
 
@@ -54,6 +56,12 @@ public class UserInviteService : IUserInviteService
 			}
 
 			con.Close();
+		}
+
+		}
+		catch
+		{
+			throw;
 		}
 
 
@@ -122,18 +130,19 @@ public class UserInviteService : IUserInviteService
 
 					con.Close();
 				}
-			}
 
-			Console.WriteLine($"Email Sent. Status = {emailSendOperation.Value.Status}");
+
+			}
 
 			/// Get the OperationId so that it can be used for tracking the message for troubleshooting
 			string operationId = emailSendOperation.Id;
-			Console.WriteLine($"Email operation id = {operationId}");
+
 		}
-		catch (Exception ex)
+		catch (Exception)
 		{
 			/// OperationID is contained in the exception message and can be used for troubleshooting purposes
-			Console.WriteLine(ex.Message);
+			throw;
+
 		}
 
 		return new OkObjectResult(userInvited);

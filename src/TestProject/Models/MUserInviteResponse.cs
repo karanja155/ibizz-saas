@@ -1,6 +1,8 @@
-﻿namespace TestProject.Models;
+﻿using TestProject.Interfaces;
 
-public class MUserInviteResponse
+namespace TestProject.Models;
+
+public class MUserInviteResponse: IUserInviteResponse
 {
 	public string InvitationEmail { get; set; } = string.Empty;
 	public Guid InvitationCode { get; set; }

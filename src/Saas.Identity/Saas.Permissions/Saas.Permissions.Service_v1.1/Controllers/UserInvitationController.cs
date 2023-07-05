@@ -21,7 +21,7 @@ public class UserInvitationController : ControllerBase
 	[ProducesResponseType(StatusCodes.Status400BadRequest)]
 	[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 	[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-	public async Task<IActionResult> inviteInfo(MUserInviteRequest? request)
+	public async Task<IActionResult> InviteInfo(MUserInviteRequest? request)
 	{
 		// Get all the permissions defined for the specific user with requested objectId from the database.
 		MUserInviteResponse response = await _userInviteService.FetchInvitationAsync(request.InvitationCode);

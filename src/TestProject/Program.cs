@@ -28,8 +28,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 		ValidateLifetime = true,
 		ValidateIssuerSigningKey = true,
 		ValidIssuer = "https://asdkdevlsg5.b2clogin.com/78efba5c-2036-4f8d-a59d-e2531da9a187/v2.0/",
-		ValidAudience = "f5a0640e-4328-4770-97dd-7d7e44bcc523",
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("JWT:Key").Value))
+
 	};
 });
 
