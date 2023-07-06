@@ -24,9 +24,16 @@ public class UserInvitationController : ControllerBase
 	public async Task<IActionResult> InviteInfo(MUserInviteRequest? request)
 	{
 		// Get all the permissions defined for the specific user with requested objectId from the database.
-		MUserInviteResponse response = await _userInviteService.FetchInvitationAsync(request.InvitationCode);
+		if (request != null)
+		{
 
-		return new OkObjectResult(response);
+			MUserInviteResponse response = await _userInviteService.FetchInvitationAsync(request.InvitationCode);
+			return new OkObjectResult(response);
+
+		}
+
+		return BadRequest();
+
 	}
 
 
